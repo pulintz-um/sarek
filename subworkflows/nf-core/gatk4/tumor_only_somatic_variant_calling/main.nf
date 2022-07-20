@@ -111,7 +111,7 @@ workflow GATK_TUMOR_ONLY_SOMATIC_VARIANT_CALLING {
     //
     pileup_table.map{meta, table -> [meta, table, []]}.set{table_contamination}
     // CALCULATECONTAMINATION ( table_contamination, true )
-    CALCULATECONTAMINATION ( table_contamination, true ) // PJU
+    CALCULATECONTAMINATION ( table_contamination) // PJU
 
     //
     //Mutect2 calls filtered by filtermutectcalls using the contamination and segmentation tables.
