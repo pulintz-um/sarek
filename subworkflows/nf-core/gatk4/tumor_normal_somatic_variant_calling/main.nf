@@ -147,7 +147,7 @@ workflow GATK_TUMOR_NORMAL_SOMATIC_VARIANT_CALLING {
     //Contamination and segmentation tables created using calculatecontamination on the pileup summary table.
     //
     ch_calccon_in       = gather_table_tumor.join(gather_table_normal)
-    CALCULATECONTAMINATION ( ch_calccon_in, true )
+    CALCULATECONTAMINATION ( ch_calccon_in)
     ch_versions   = ch_versions.mix(CALCULATECONTAMINATION.out.versions)
 
     //
