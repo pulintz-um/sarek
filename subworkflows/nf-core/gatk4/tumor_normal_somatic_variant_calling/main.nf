@@ -33,7 +33,8 @@ workflow GATK_TUMOR_NORMAL_SOMATIC_VARIANT_CALLING {
     //
     //Perform variant calling using mutect2 module in tumor single mode.
     //
-    MUTECT2 ( input, false, false, false, fasta, fai, dict, germline_resource, germline_resource_tbi, panel_of_normals, panel_of_normals_tbi )
+    // MUTECT2 ( input, false, false, false, fasta, fai, dict, germline_resource, germline_resource_tbi, panel_of_normals, panel_of_normals_tbi ) // PJU
+    MUTECT2 ( input, fasta, fai, dict, germline_resource, germline_resource_tbi, panel_of_normals, panel_of_normals_tbi )
     ch_versions = ch_versions.mix(MUTECT2.out.versions)
 
     //
