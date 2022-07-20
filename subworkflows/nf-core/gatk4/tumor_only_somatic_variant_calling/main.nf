@@ -30,7 +30,7 @@ workflow GATK_TUMOR_ONLY_SOMATIC_VARIANT_CALLING {
     //
     //Perform variant calling using mutect2 module in tumor single mode.
     //
-    // MUTECT2 ( input , true , false , false , fasta , fai , dict , germline_resource , germline_resource_tbi , panel_of_normals , panel_of_normals_tbi )
+    // MUTECT2 ( input , true , false , false , fasta , fai , dict , germline_resource , germline_resource_tbi , panel_of_normals , panel_of_normals_tbi ) // PJU
     MUTECT2 ( input , fasta , fai , dict , germline_resource , germline_resource_tbi , panel_of_normals , panel_of_normals_tbi )
 
     //
@@ -110,7 +110,8 @@ workflow GATK_TUMOR_ONLY_SOMATIC_VARIANT_CALLING {
     //Contamination and segmentation tables created using calculatecontamination on the pileup summary table.
     //
     pileup_table.map{meta, table -> [meta, table, []]}.set{table_contamination}
-    CALCULATECONTAMINATION ( table_contamination, true )
+    // CALCULATECONTAMINATION ( table_contamination, true )
+    CALCULATECONTAMINATION ( table_contamination, true ) // PJU
 
     //
     //Mutect2 calls filtered by filtermutectcalls using the contamination and segmentation tables.
